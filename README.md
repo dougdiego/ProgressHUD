@@ -47,7 +47,7 @@ dependencies: [
 
 ### Manually
 
-Drop [ProgressHUD.swift](https://github.com/dougdiego/ProgressHUD/blob/master/ProgressHUD.swift) in your project.
+Drop [ProgressHUD.swift](https://github.com/dougdiego/ProgressHUD/blob/master/Sources/ProgressHUD/ProgressHUD.swift) in your project.
 
 ## Requirements
 
