@@ -1,6 +1,8 @@
 # ProgressHUD
 A Progress HUD for SwiftUI
 
+<img align="right" src="https://raw.githubusercontent.com/dougdiego/ProgressHUD/master/Assets/screenshot01.png" width="480" />
+
 # Usage
 1. Add a binding bool to control progress HUD presentation state
 3. Add `.progressHUD` modifier to your View
