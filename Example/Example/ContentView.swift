@@ -18,59 +18,65 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Button(action: {
-                    self.showProgress1 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.showProgress1 = false
-                    }
-                }) {
-                    Text("Progress ")
-                        .foregroundColor(.purple)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.purple, lineWidth: 1)
-                    )
-                }
+            HStack {
+                Spacer()
                 
-                Button(action: {
-                    self.showProgress2 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.showProgress2 = false
-                    }
-                }) {
-                    Text("Error")
-                        .foregroundColor(.purple)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.purple, lineWidth: 1)
-                    )
-                }.padding(.top, 16)
-                
-                Button(action: {
-                    self.showProgress3 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.progressHUD3Type = .success
-                        self.progressHUD3Text = "Success"
+                VStack(alignment: .center) {
+                    Button(action: {
+                        self.showProgress1 = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            self.showProgress3 = false
-                            self.progressHUD3Type = .default
-                            self.progressHUD3Text = "Loading..."
+                            self.showProgress1 = false
                         }
+                    }) {
+                        Text("Progress ")
+                            .foregroundColor(.purple)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.purple, lineWidth: 1)
+                            )
                     }
-                }) {
-                    Text("Progress and Success")
-                        .foregroundColor(.purple)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.purple, lineWidth: 1)
-                    )
-                }.padding(.top, 16)
-                
-            }
+                    
+                    Button(action: {
+                        self.showProgress2 = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.showProgress2 = false
+                        }
+                    }) {
+                        Text("Error")
+                            .foregroundColor(.purple)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.purple, lineWidth: 1)
+                            )
+                    }.padding(.top, 16)
+                    
+                    Button(action: {
+                        self.showProgress3 = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.progressHUD3Type = .success
+                            self.progressHUD3Text = "Success"
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showProgress3 = false
+                                self.progressHUD3Type = .default
+                                self.progressHUD3Text = "Loading..."
+                            }
+                        }
+                    }) {
+                        Text("Progress and Success")
+                            .foregroundColor(.purple)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.purple, lineWidth: 1)
+                            )
+                    }.padding(.top, 16)
+                    
+                }
+                Spacer()
+            }.padding(.top, 16)
+            
             .navigationBarTitle(Text("ProgressHUD"), displayMode: .large)
             .progressHUD(isShowing: $showProgress1, text: Text("Loading..."))
             .progressHUD(isShowing: $showProgress2, type: .error, text: Text("Error"))

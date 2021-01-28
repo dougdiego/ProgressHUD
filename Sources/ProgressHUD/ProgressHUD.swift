@@ -55,15 +55,17 @@ struct ProgressHUD<Presenting>: View where Presenting: View {
                     } else if self.type == .info {
                         Image(systemName: "info.circle").resizable().frame(width: 30, height: 30)
                     } else {
-                        ActivityIndicator(isAnimating: .constant(true), style: .large)
+                        if #available(iOS 14.0, *) {
+                            ProgressView()
+                        } else {
+                            ActivityIndicator(isAnimating: .constant(true), style: .large)
+                        }
                     }
                     
                     if self.text != nil {
                         self.text
                     }
                 }.padding()
-                    //                .frame(width: 100,
-                    //                       height: 100)
                     .background(Color.secondary.colorInvert())
                     .foregroundColor(Color.primary)
                     .cornerRadius(20)
